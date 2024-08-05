@@ -13,6 +13,7 @@ openai = "*"
 langchain-openai = "*"
 numexpr = "*"
 duckduckgo-search = "*"
+wikipedia = "*"
 
 [dev-packages]
 ipykernel = "*"
