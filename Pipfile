@@ -21,6 +21,7 @@ pytube = "*"
 pydantic = "*"
 chromadb = "*"
 faiss-gpu = "*"
+streamlit = "*"
 
 [dev-packages]
 ipykernel = "*"
