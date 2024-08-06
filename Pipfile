@@ -19,6 +19,8 @@ jq = "*"
 youtube-transcript-api = "*"
 pytube = "*"
 pydantic = "*"
+chromadb = "*"
+faiss-gpu = "*"
 
 [dev-packages]
 ipykernel = "*"
