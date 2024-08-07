@@ -22,6 +22,9 @@ pydantic = "*"
 chromadb = "*"
 faiss-gpu = "*"
 streamlit = "*"
+pinecone-client = "*"
+tiktoken = "*"
+langchain-anthropic = "*"
 
 [dev-packages]
 ipykernel = "*"
