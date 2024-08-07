@@ -25,6 +25,7 @@ streamlit = "*"
 pinecone-client = "*"
 tiktoken = "*"
 langchain-anthropic = "*"
+langchainhub = "*"
 
 [dev-packages]
 ipykernel = "*"
