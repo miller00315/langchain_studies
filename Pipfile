@@ -26,6 +26,8 @@ pinecone-client = "*"
 tiktoken = "*"
 langchain-anthropic = "*"
 langchainhub = "*"
+psycopg2-binary = "*"
+pgvector = "*"
 
 [dev-packages]
 ipykernel = "*"
