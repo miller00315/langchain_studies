@@ -34,6 +34,8 @@ pymongo = "*"
 langchain-google-genai = "*"
 google-generativeai = "*"
 pillow = "*"
+docx2txt = "*"
+chroma = "*"
 
 [dev-packages]
 ipykernel = "*"
