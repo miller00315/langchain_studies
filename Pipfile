@@ -29,6 +29,11 @@ langchainhub = "*"
 psycopg2-binary = "*"
 pgvector = "*"
 langchain-postgres = "*"
+langchain-mongodb = "*"
+pymongo = "*"
+langchain-google-genai = "*"
+google-generativeai = "*"
+pillow = "*"
 
 [dev-packages]
 ipykernel = "*"

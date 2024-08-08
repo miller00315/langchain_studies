@@ -20,7 +20,7 @@ build:
 	docker build . $(BUILD_FLAGS) -t ${IMAGE_NAME}
 
 run:
-	docker run --name ${CONTAINER_NAME} -i -d -p 5432:5432 -e POSTGRES_PASSWORD=mypassword  ${IMAGE_NAME}
+	docker run --name ${CONTAINER_NAME} -i -d -p 5433:5432 -e POSTGRES_PASSWORD=mypassword  ${IMAGE_NAME}
 
 delete:
 	-@docker stop ${CONTAINER_NAME}
