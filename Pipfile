@@ -28,6 +28,7 @@ langchain-anthropic = "*"
 langchainhub = "*"
 psycopg2-binary = "*"
 pgvector = "*"
+langchain-postgres = "*"
 
 [dev-packages]
 ipykernel = "*"
