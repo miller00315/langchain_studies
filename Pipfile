@@ -36,6 +36,9 @@ google-generativeai = "*"
 pillow = "*"
 docx2txt = "*"
 chroma = "*"
+unstructured = "*"
+pdfminer = "*"
+"pdfminer.six" = "*"
 
 [dev-packages]
 ipykernel = "*"
