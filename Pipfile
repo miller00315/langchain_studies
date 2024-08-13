@@ -39,6 +39,7 @@ chroma = "*"
 unstructured = "*"
 pdfminer = "*"
 "pdfminer.six" = "*"
+streamlit-chat = "*"
 
 [dev-packages]
 ipykernel = "*"
