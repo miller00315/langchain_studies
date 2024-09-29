@@ -2,9 +2,14 @@ from datetime import datetime
 import os
 from readline import clear_history
 import streamlit as st
+from langchain_postgres import PGVector
 from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import Chroma
 from langchain_core.documents import Document
+
+connection = "postgresql+psycopg2://myuser:mypassword@0.0.0.0:5433/mydb"  # Uses psycopg3!
+collection_name = "my_docs"
+
+embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 
 # loading PDF, DOCX and TXT files as LangChain Documents
 def load_document(file):
@@ -39,12 +44,19 @@ def chunk_data(data, chunk_size: int = 256, chunk_overlap: int = 20) -> list[Doc
 def create_embedings(chuncks: list[Document]):
     embeddings = OpenAIEmbeddings()
 
-    vector_store = Chroma.from_documents(chuncks, embeddings)
+    vector_store = PGVector(
+        embeddings=embeddings,
+        collection_name=collection_name,
+        connection=connection,
+        use_jsonb=True,
+    )
+
+    vector_store.add_documents(chuncks)
 
     return vector_store
 
-def ask_and_get_answer(vector_store: Chroma, q: str, k: int = 3):
-    from langchain.chains import RetrievalQA
+def ask_and_get_answer(vector_store: PGVector, q: str, k: int = 3):
+    from langchain.chains.retrieval_qa.base import RetrievalQA
     from langchain_openai import ChatOpenAI
 
     llm = ChatOpenAI(model='gpt-3.5-turbo', temperature=1)
@@ -113,9 +125,9 @@ if __name__ == '__main__':
 
                 st.write(f'Embedding cost: ${embedding_cost:.4f}')
 
-                vectore_store = create_embedings(chuncks=chunks)
+                vector_store = create_embedings(chuncks=chunks)
 
-                st.session_state.vector_store = vectore_store
+                st.session_state.vector_store = vector_store
 
                 st.success('File uploaded, chunked ans embedded successfully!')
     
