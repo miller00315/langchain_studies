@@ -82,7 +82,7 @@ if __name__ == "__main__":
 
     agent_step: Union[AgentAction, AgentFinish] = agent.invoke(
         {
-            "input": 'What the length of the text DOG',
+            "input": 'What the length of the text ANIMAL?',
             "agent_scratchpad": intermediate_steps,
         }
     )
@@ -106,7 +106,7 @@ if __name__ == "__main__":
 
     agent_step: Union[AgentAction, AgentFinish] = agent.invoke(
         {
-            "input": 'What the length of "DOG" in chanracters?',
+            "input": 'What the length of the text ANIMAL?',
             "agent_scratchpad": intermediate_steps,
         }
     )
