@@ -2,29 +2,29 @@
 from numpy import number
 import streamlit as st
 
-st.title('Streamlit Session')
+st.title("Streamlit Session")
 st.write(st.session_state)
 
-if 'counter' not in st.session_state:
-    st.session_state['counter'] = 0
+if "counter" not in st.session_state:
+    st.session_state["counter"] = 0
 else:
     st.session_state.counter += 1
 
-st.write(f'Counter: {st.session_state.counter}')
+st.write(f"Counter: {st.session_state.counter}")
 
 st.divider()
 
-button = st.button('Update state')
+button = st.button("Update state")
 
-if 'clicks' not in st.session_state:
-    st.session_state['clicks'] = 0
+if "clicks" not in st.session_state:
+    st.session_state["clicks"] = 0
 
 if button:
-    st.session_state['clicks'] += 1
+    st.session_state["clicks"] += 1
 
-    f'After presing button {st.session_state}'
+    f"After presing button {st.session_state}"
 
-number_ = st.slider('Value', 1, 10, key='my_slider')
+number_ = st.slider("Value", 1, 10, key="my_slider")
 
 st.write(st.session_state)
 

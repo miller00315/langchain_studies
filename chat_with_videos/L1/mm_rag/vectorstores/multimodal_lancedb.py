@@ -3,9 +3,10 @@ from langchain_core.embeddings import Embeddings
 import uuid
 from langchain_community.vectorstores.lancedb import LanceDB
 
+
 class MultimodalLanceDB(LanceDB):
     """`LanceDB` vector store to process multimodal data
-    
+
     To use, you should have ``lancedb`` python package installed.
     You can install it with ``pip install lancedb``.
 
@@ -30,7 +31,7 @@ class MultimodalLanceDB(LanceDB):
             vectorstore.add_texts(['text1', 'text2'])
             result = vectorstore.similarity_search('text1')
     """
-    
+
     def __init__(
         self,
         connection: Optional[Any] = None,
@@ -39,15 +40,26 @@ class MultimodalLanceDB(LanceDB):
         vector_key: Optional[str] = "vector",
         id_key: Optional[str] = "id",
         text_key: Optional[str] = "text",
-        image_path_key: Optional[str] = "image_path", 
+        image_path_key: Optional[str] = "image_path",
         table_name: Optional[str] = "vectorstore",
         api_key: Optional[str] = None,
         region: Optional[str] = None,
         mode: Optional[str] = "append",
     ):
-        super(MultimodalLanceDB, self).__init__(connection, embedding, uri, vector_key, id_key, text_key, table_name, api_key, region, mode)
+        super(MultimodalLanceDB, self).__init__(
+            connection,
+            embedding,
+            uri,
+            vector_key,
+            id_key,
+            text_key,
+            table_name,
+            api_key,
+            region,
+            mode,
+        )
         self._image_path_key = image_path_key
-        
+
     def add_text_image_pairs(
         self,
         texts: Iterable[str],
@@ -68,7 +80,9 @@ class MultimodalLanceDB(LanceDB):
             List of ids of the added text-image pairs.
         """
         # the length of texts must be equal to the length of images
-        assert len(texts)==len(image_paths), "the len of transcripts should be equal to the len of images"
+        assert len(texts) == len(
+            image_paths
+        ), "the len of transcripts should be equal to the len of images"
 
         # Embed texts and create documents
         docs = []
@@ -82,13 +96,13 @@ class MultimodalLanceDB(LanceDB):
                     self._vector_key: embedding,
                     self._id_key: ids[idx],
                     self._text_key: text,
-                    self._image_path_key : image_paths[idx],
+                    self._image_path_key: image_paths[idx],
                     "metadata": metadata,
                 }
             )
 
-        if 'mode' in kwargs:
-            mode = kwargs['mode']
+        if "mode" in kwargs:
+            mode = kwargs["mode"]
         else:
             mode = self.mode
         if self._table_name in self._connection.table_names():

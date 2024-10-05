@@ -53,6 +53,7 @@ langchain-ollama = "*"
 flask = "*"
 flask-restplus = "*"
 langsmith = "*"
+black = "*"
 
 [dev-packages]
 ipykernel = "*"
