@@ -7,6 +7,7 @@ from langchain.prompts import PromptTemplate
 from langchain.tools.render import render_text_description
 from langchain_openai import ChatOpenAI
 from langchain.agents.format_scratchpad import format_log_to_str
+from callbacks import AgentCallbackHandler
 
 load_dotenv(dotenv_path=find_dotenv())
 
@@ -68,7 +69,12 @@ if __name__ == "__main__":
         tool_names=", ".join([t.name for t in tools]),
     )
 
-    llm = ChatOpenAI(temperature=0, stop_sequences=["\nObservation"], model='gpt-4o')
+    llm = ChatOpenAI(
+        temperature=0,
+        stop_sequences=["\nObservation"],
+        model="gpt-4o",
+        callbacks=[AgentCallbackHandler()],
+    )
 
     agent = (
         {
@@ -80,35 +86,26 @@ if __name__ == "__main__":
         | ReActSingleInputOutputParser()
     )
 
-    agent_step: Union[AgentAction, AgentFinish] = agent.invoke(
-        {
-            "input": 'What the length of the text ANIMAL?',
-            "agent_scratchpad": intermediate_steps,
-        }
-    )
+    agent_step = ''
+    
+    while not isinstance(agent_step, AgentFinish):
+        agent_step: Union[AgentAction, AgentFinish] = agent.invoke(
+            {
+                "input": "What the length of the text ANIMAL?",
+                "agent_scratchpad": intermediate_steps,
+            }
+        )
 
-    if isinstance(agent_step, AgentAction):
-        tool_name = agent_step.tool
+        if isinstance(agent_step, AgentAction):
+            tool_name = agent_step.tool
 
-        tool_to_use = find_tool_by_name(tools, tool_name)
+            tool_to_use = find_tool_by_name(tools, tool_name)
 
-        tool_input = agent_step.tool_input
+            tool_input = agent_step.tool_input
 
-        print(tool_input)
+            observation = tool_to_use.func(str(tool_input))
 
-        observation = tool_to_use.func(str(tool_input))
-
-        print(f"{observation}")
-
-        intermediate_steps.append((agent_step, str(observation)))
-
-    print(intermediate_steps)
-
-    agent_step: Union[AgentAction, AgentFinish] = agent.invoke(
-        {
-            "input": 'What the length of the text ANIMAL?',
-            "agent_scratchpad": intermediate_steps,
-        }
-    )
-
-    print(agent_step)
+            intermediate_steps.append((agent_step, str(observation)))
+    
+    if isinstance(agent_step, AgentFinish):
+        print(agent_step.return_values)
