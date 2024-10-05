@@ -1,0 +1,480 @@
+
+Search
+Write
+Sign up
+
+Sign in
+
+
+
+Vector Databases: A Beginner’s Guide!
+Pavan Belagatti
+Data And Beyond
+Pavan Belagatti
+
+·
+Follow
+
+Published in
+Data And Beyond
+
+·
+9 min read
+·
+Aug 25, 2023
+1.1K
+
+
+6
+
+
+
+
+Image by author: Pavan Belagatti
+In the age of burgeoning data complexity and high-dimensional information, traditional databases often fall short when it comes to efficiently handling and extracting meaning from intricate datasets. Enter vector databases, a technological innovation that has emerged as a solution to the challenges posed by the ever-expanding landscape of data.
+
+Understanding Vector Databases
+Vector databases have gained significant importance in various fields due to their unique ability to efficiently store, index, and search high-dimensional data points, often referred to as vectors. These databases are designed to handle data where each entry is represented as a vector in a multi-dimensional space. The vectors can represent a wide range of information, such as numerical features, embeddings from text or images, and even complex data like molecular structures.
+
+Let’s represent the vector database using a 2D grid where one axis represents the color of the animal (brown, black, white) and the other axis represents the size (small, medium, large).
+
+
+In this representation:
+
+Image A: Brown color, Medium size
+Image B: Black color, Small size
+Image C: White color, Large size
+Image E: Black color, Large size
+You can imagine each image as a point plotted on this grid based on its color and size attributes. This simplified grid captures the essence of how a vector database could be represented visually, even though the actual vector spaces might have many more dimensions and use sophisticated techniques for search and retrieval.
+
+Explain Vector Databases Like I’m 5
+
+Imagine you have a big box of colorful crayons, and each crayon is a different color. A vector database is like a magical sorting machine that helps you find crayons that are similar in color really fast. When you want a crayon that looks like your favorite blue one, you put in a picture of it, and the machine quickly looks through all the crayons. It finds the ones that are closest in color to your blue crayon and shows them to you. This way, you can easily pick out the crayons you want without searching through the whole box!
+
+How Do Vector Databases Store Data?
+
+Vector databases store data as high-dimensional vector embeddings, capturing semantic meaning and relationships. They utilize specialized indexing techniques like hashing, quantization, and graph-based methods to enable fast querying and similarity searches.
+
+Vector databases excel at retrieving semantically similar data points, making them ideal for managing unstructured data like text, images, and audio. While computationally intensive, vector databases are designed to scale efficiently, accommodating the growing demands of AI applications. Despite integration challenges, their ability to manage complex data relationships positions them as a critical component in modern data management strategies.
+
+How Do Vector Databases Work?
+
+Image credits: KDnuggets
+
+When a user query is initiated, various types of raw data including images, documents, videos and audio. All of this, which can be either unstructured or structured, are first processed through an embedding model. This model is often a complex neural network, translating data into high-dimensional numerical vectors and effectively encoding the data’s characteristics into vector embeddings — which are then stored into a a vector database like SingleStoreDB.
+
+When retrieval is required, the vector database performs operations (like similarity searches) to find and retrieve the vectors most similar to the query, efficiently handling complex queries and delivering relevant results to the user. This entire process enables the rapid and accurate management of vast and varied data types in applications that require high-speed search and retrieval functions.
+
+Here is my in-depth hands-on video on vector databases.
+
+How does a vector database differ from a traditional database?
+Let’s explore the difference between a vector database and a traditional database.
+
+
+Vector databases represent a significant departure from traditional databases in their approach to data organization and retrieval. Traditional databases are structured to handle discrete, scalar data types like numbers and strings, organizing them in rows and columns.
+
+This structure is ideal for transactional data but less efficient for the complex, high-dimensional data typically used in AI and machine learning. In contrast, vector databases are designed to store and manage vector data — arrays of numbers that represent points in a multi-dimensional space.
+
+This makes them inherently suited for tasks involving similarity search where the goal is to find the closest data points in a high-dimensional space, a common requirement in AI applications like image and voice recognition, recommendation systems and natural language processing. By leveraging indexing and search algorithms optimized for high-dimensional vector spaces, vector databases offer a more efficient and effective way to handle the kind of data that is increasingly prevalent in the age of advanced AI and machine learning.
+
+Vector Database Capabilities
+The significance of vector databases lies in their capabilities and applications:
+
+- Efficient Similarity Search:
+Vector databases excel at performing similarity searches, where you can retrieve vectors that are most similar to a given query vector.
+
+- High-Dimensional Data:
+Vector databases are designed to handle high-dimensional data more efficiently, making them suitable for applications like natural language processing, computer vision, and genomics.
+
+- Machine Learning and AI:
+Vector databases are often used to store embeddings generated by machine learning models. These embeddings capture the essential features of the data and can be used for various tasks, such as clustering, classification, and anomaly detection.
+
+- Real-time Applications:
+Many vector databases are optimized for real-time or near-real-time querying, making them suitable for applications that require quick responses, such as recommendation systems in e-commerce, fraud detection, and monitoring IoT sensor data.
+
+- Personalization and User Profiling:
+Vector databases enable personalized experiences by allowing systems to understand and predict user preferences. This is crucial in platforms like streaming services, social media, and online marketplaces.
+
+- Spatial and Geographic Data:
+Vector databases can handle geographic data, such as points, lines, and polygons, efficiently. This is essential in applications like geographical information systems (GIS), location-based services, and navigation applications.
+
+- Healthcare and Life Sciences:
+In genomics and molecular biology, vector databases are used to store and analyze genetic sequences, protein structures, and other molecular data.
+
+- Data Fusion and Integration:
+Vector databases can integrate data from various sources and types, enabling more comprehensive analysis and insights. This is valuable in scenarios where data comes from multiple modalities, such as combining text, image, and numerical data.
+
+- Multilingual Search:
+Vector databases can be used to create powerful multilingual search engines by representing text documents as vectors in a common space, enabling cross-lingual similarity searches.
+
+Vector Database Use Cases
+Vector databases play a vital role in recommendation systems for businesses. For example, they can recommend items to a user depending on their browsing or buying behavior. They shine well even in fraud detection systems where they can detect anomalous patterns by comparing transaction embeddings against known profiles of fraudulent activity, thus enabling real-time fraud detection. Face recognition is an additional use case where vector databases store facial feature embeddings and help in security and surveillance.
+
+They can even help organizations with customer support by responding to the similar queries with pre-determined or little varied responses. Market research is another area where vector databases do well by analyzing customer feedback and social media posts, converting them into text embeddings to do sentiment analysis and trend spotting — gaining even more business insights.
+
+Vector Database Tutorial
+Harness the robust vector database capabilities of SingleStoreDB, tailored to seamlessly serve AI-driven applications, chatbots, image recognition systems, and more. SingleStore has supported vector capabilities since 2017, enabling efficient storage and retrieval of high-dimensional vector data. This functionality allows for advanced applications such as semantic search, recommendation systems, and real-time analytics, making it a versatile choice for modern data-driven solutions.
+
+
+Sign up to SingleStore to start using it as a vector database. You when you sign up, you will receive free credits.
+
+Once you sign up to SingleStore, and sign in, this is where you will land. You will have the Workspace creayed by default (if you don’t have a workspace, create one). Under your workspace, create a database just by clicking the ‘+ Create Database’ tab as shown below, it’s free.
+
+
+Use SingleStore’s Notebooks feature (just like Jupyter Notebooks or Google Colab). That is where we are going to add our code to experience the robust vector database capabilities.
+
+
+Create a new Notebook and start adding the code.
+
+Make sure to select your respective workspace and database you created.
+
+
+Start with installing and importing the required libraries and dependencies.
+
+!pip3 install wget — quiet
+!pip3 install openai==1.3.3 — quiet
+!pip3 install sentence-transformers — quiet
+import json
+import os
+import pandas as pd
+import wget
+Download the model
+
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer('flax-sentence-embeddings/all_datasets_v3_mpnet-base')
+Import data from the csv file (AG News is a subdataset of AG’s corpus of news articles)
+
+cvs_file_path = 'https://raw.githubusercontent.com/openai/openai-cookbook/main/examples/data/AG_news_samples.csv'
+file_path = 'AG_news_samples.csv'
+
+if not os.path.exists(file_path):
+    wget.download(cvs_file_path, file_path)
+    print('File downloaded successfully.')
+else:
+    print('File already exists in the local file system.')
+
+df = pd.read_csv('AG_news_samples.csv')
+df
+You can see the data here
+
+data = df.to_dict(orient='records')
+data[0]
+The next step is set up the database to store our data
+
+%%sql
+
+DROP TABLE IF EXISTS news_articles;
+CREATE TABLE IF NOT EXISTS news_articles (
+    title TEXT,
+    description TEXT,
+    genre TEXT,
+    embedding BLOB,
+    FULLTEXT(title, description)
+);
+Get embeddings for every row based on the description column
+
+descriptions = [row['description'] for row in data]
+all_embeddings = model.encode(descriptions)
+all_embeddings.shape
+Merge embedding values into data rows
+
+for row, embedding in zip(data, all_embeddings):
+    row['embedding'] = embedding
+Here is an example of one row of the combined data
+
+data[0]
+You should see the response as below,
+
+
+Now, let’s populate the database with our data
+
+%sql TRUNCATE TABLE news_articles;
+
+import sqlalchemy as sa
+from singlestoredb import create_engine
+
+# Use create_table from singlestoredb since it uses the notebook connection URL
+conn = create_engine().connect()
+
+statement = sa.text('''
+    INSERT INTO news_articles (
+        title,
+        description,
+        genre,
+        embedding
+    )
+    VALUES (
+        :title,
+        :description,
+        :label,
+        :embedding
+    )
+''')
+
+conn.execute(statement, data)
+Let’s run semantic search, and get scores for the search term ‘India’
+
+search_query = 'India'
+search_embedding = model.encode(search_query)
+
+query_statement = sa.text('''
+    SELECT
+        title,
+        description,
+        genre,
+        DOT_PRODUCT(embedding, :embedding) AS score
+    FROM news_articles
+    ORDER BY score DESC
+    LIMIT 10
+''')
+
+# Execute the SQL statement.
+results = pd.DataFrame(conn.execute(query_statement, dict(embedding=search_embedding)))
+print(results)
+You should see the results as below,
+
+
+Now, let’s run a hybrid search to find articles about India.
+
+hyb_query = 'Articles about India'
+hyb_embedding = model.encode(hyb_query)
+
+# Create the SQL statement.
+hyb_statement = sa.text('''
+    SELECT
+        title,
+        description,
+        genre,
+        DOT_PRODUCT(embedding, :embedding) AS semantic_score,
+        MATCH(title, description) AGAINST (:query) AS keyword_score,
+        (semantic_score + keyword_score) / 2 AS combined_score
+    FROM news_articles
+    ORDER BY combined_score DESC
+    LIMIT 10
+''')
+
+# Execute the SQL statement.
+hyb_results = pd.DataFrame(conn.execute(hyb_statement, dict(embedding=hyb_embedding, query=hyb_query)))
+hyb_results
+You should see the results as below,
+
+
+You can go to your database that you created and check how the vector data has been stored.
+
+
+The complete code can be found here below,
+
+GitHub - pavanbelagatti/vector-db-tutorial-AV
+Contribute to pavanbelagatti/vector-db-tutorial-AV development by creating an account on GitHub.
+github.com
+
+Now, it is time for you to play around with SingleStore and build robust AI applications.
+
+Sign up to SingleStore & claim your free credits & get started with building robust AI/ML applications.
+
+The article is originally published on dev.to
+
+Data Science
+Database
+Data
+Data Analysis
+Vector Database
+1.1K
+
+
+6
+
+
+Pavan Belagatti
+Data And Beyond
+Written by Pavan Belagatti
+4.7K Followers
+·
+Writer for 
+Data And Beyond
+
+Developer Evangelist | AI/ML| DevOps | Data Science! Currently working at SingleStore as a Developer Evangelist.
+
+Follow
+
+More from Pavan Belagatti and Data And Beyond
+Implementing Retrieval Augmented Generation (RAG): A Hands-On Guide!
+Pavan Belagatti
+Pavan Belagatti
+
+in
+
+Generative AI
+
+Implementing Retrieval Augmented Generation (RAG): A Hands-On Guide!
+Large language models (LLMs) are becoming the backbone of most of the organizations these days as the whole world is making the transition…
+Apr 17
+424
+6
+Not Diamond webpage with a dark theme displaying the text “The future is multi-modal.” Below it, another line reads “Call the right model at the right time with the world’s most powerful AI model router.” There are two buttons: “pip install | not-ai” and “Product of the day.” A chat interface in the top right corner has an input field with placeholder text “Ask anything…” and example questions like “Write me a regex in Python” and “What’s the weather like in San Francisco tomorrow?”
+Shubhojeet Dey
+Shubhojeet Dey
+
+in
+
+Data And Beyond
+
+This New AI Chatbot Gives You Free Access to ChatGPT, Claude, and Gemini
+I stumbled upon ‘Not Diamond’ — it lets you use all pro AI models for free and even chooses the best one for each task
+
+Sep 3
+242
+5
+5 Realistic Ways to Make Money With AI
+Yennhi95zz
+Yennhi95zz
+
+in
+
+Data And Beyond
+
+How to Use AI for Earning Passive Income
+5 Realistic Ways to Make Money With AI
+
+Jul 20
+146
+6
+Advanced RAG Techniques: Upgrade Your LLM App Prototype to Production-Ready!
+Pavan Belagatti
+Pavan Belagatti
+
+in
+
+Level Up Coding
+
+Advanced RAG Techniques: Upgrade Your LLM App Prototype to Production-Ready!
+New to the world of Retrieval Augmented Generation (RAG)? We’ve got you covered with this in-depth guide.
+Sep 5
+194
+See all from Pavan Belagatti
+See all from Data And Beyond
+Recommended from Medium
+Which Vector Database Should You Use? Choosing the Best One for Your Needs
+Plaban Nayak
+Plaban Nayak
+
+in
+
+The AI Forum
+
+Which Vector Database Should You Use? Choosing the Best One for Your Needs
+Introduction
+Apr 19
+553
+8
+Prompt Engineering Is Dead: DSPy Is New Paradigm For Prompting
+Vishal Rajput
+Vishal Rajput
+
+in
+
+AIGuys
+
+Prompt Engineering Is Dead: DSPy Is New Paradigm For Prompting
+DSPy Paradigm: Let’s program — not prompt — LLMs
+
+May 29
+5K
+68
+Lists
+
+
+
+Predictive Modeling w/ Python
+20 stories
+·
+1572 saves
+Principal Component Analysis for ML
+Time Series Analysis
+deep learning cheatsheet for beginner
+Practical Guides to Machine Learning
+10 stories
+·
+1907 saves
+
+
+
+ChatGPT prompts
+48 stories
+·
+2052 saves
+
+
+
+data science and AI
+40 stories
+·
+256 saves
+LLM Architectures Explained: NLP Fundamentals (Part 1)
+Vipra Singh
+Vipra Singh
+
+LLM Architectures Explained: NLP Fundamentals (Part 1)
+Deep Dive into the architecture & building of real-world applications leveraging NLP Models starting from RNN to the Transformers.
+
+Aug 15
+1.6K
+12
+Not RAG, but RAG Fusion? Understanding Next-Gen Info Retrieval.
+Surya Maddula
+Surya Maddula
+
+in
+
+Towards AI
+
+Not RAG, but RAG Fusion? Understanding Next-Gen Info Retrieval.
+AI and Natural Language Processing are advancing at an incredible pace, and now more than ever, we need better and more RELIABLE ways to…
+
+Sep 22
+758
+9
+17 Mindblowing Python Automation Scripts I Use Everyday
+Abhay Parashar
+Abhay Parashar
+
+in
+
+The Pythoneers
+
+17 Mindblowing Python Automation Scripts I Use Everyday
+Scripts That Increased My Productivity and Performance
+
+3d ago
+8K
+76
+Building a Customized Knowledge Base with RAG, Llama 3, FAISS, and Langchain
+Bhavik Jikadara
+Bhavik Jikadara
+
+Building a Customized Knowledge Base with RAG, Llama 3, FAISS, and Langchain
+In today’s digital age, efficiently managing and utilizing information is more important than ever. A private knowledge base can be a…
+
+Jul 22
+10
+1
+See more recommendations
+Help
+
+Status
+
+About
+
+Careers
+
+Press
+
+Blog
+
+Privacy
+
+Terms
+
+Text to speech
+
+Teams
