@@ -1,6 +1,8 @@
+from typing import List, Union
 from dotenv import load_dotenv, find_dotenv
-from langchain.agents import tool
-from langchain import hub
+from langchain.agents import tool, Tool
+from langchain_core.agents import AgentAction, AgentFinish
+from langchain.agents.output_parsers import ReActSingleInputOutputParser
 from langchain.prompts import PromptTemplate
 from langchain.tools.render import render_text_description
 from langchain_openai import ChatOpenAI
@@ -17,6 +19,14 @@ def get_text_length(text: str) -> int:
     text = text.strip("'\n").strip('"')
 
     return len(text)
+
+def find_tool_by_name(tools: List[Tool], tool_name: str) -> Tool:
+    result = list(filter(lambda x: x.name == tool_name, tools))
+    
+    if result:
+        return result[0]
+    else:
+        raise ValueError(f'Tool with name {tool_name} not found')
 
 
 if __name__ == "__main__":
@@ -38,7 +48,6 @@ if __name__ == "__main__":
     Observation: the result of the action
     ... (this Thought/Action/Action Input/Observation can repeat N times)
     Thought: I now know the final answer
-    Final Answer: the final answer to the original input question
     
     Begin!
     
@@ -53,11 +62,21 @@ if __name__ == "__main__":
 
     llm = ChatOpenAI(temperature=0, stop_sequences=['\nObservation'])
 
-    agent = {'input': lambda x: x['input']} | prompt | llm
+    agent = {'input': lambda x: x['input']} | prompt | llm | ReActSingleInputOutputParser()
 
-    res = agent.invoke({'input': 'What the length of "DOG" in chanracters?'})
+    agent_step: Union[AgentAction, AgentFinish] = agent.invoke({'input': 'What the length of "DOG" in chanracters?'})
 
-    print(res)
+    if isinstance(agent_step, AgentAction):
+        tool_name = agent_step.tool
+        
+        tool_to_use = find_tool_by_name(tools, tool_name)
+
+        tool_input = agent_step.tool_input
+
+        observation = tool_to_use.func(str(tool_input))
+
+        print(observation)
+
 
 
 
