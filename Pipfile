@@ -54,6 +54,7 @@ flask = "*"
 flask-restplus = "*"
 langsmith = "*"
 black = "*"
+langchain-pinecone = "*"
 
 [dev-packages]
 ipykernel = "*"
