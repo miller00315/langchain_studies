@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "93c8ac2e204ba734898f823d6fef6a36c3aeff4bff4a5f3e0d3f02fdbe4ca59e"
+            "sha256": "417edd385d0f951080f208a99b793fe3af37a583dcd02e6c4f69a9ce28c4ba1c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -2485,7 +2485,7 @@
                 "sha256:f870204a840a60da0b12273ef34f7051e98c3b5961b61b0c2c1be6dfd64fbcd3",
                 "sha256:ffa75af20b44f8dba823498024771d5ac50620e6915abac414251bd971b4529f"
             ],
-            "markers": "python_version >= '3.9'",
+            "markers": "python_version < '3.12'",
             "version": "==1.26.4"
         },
         "oauthlib": {
@@ -2777,6 +2777,7 @@
                 "sha256:f3a255b2c19987fbbe62a9dfd6cff7ff2aa9ccab3fc75218fd4b7530f01efa24",
                 "sha256:fffb8ae78d8af97f849404f21411c95062db1496aeb3e56f146f0355c9989319"
             ],
+            "index": "pypi",
             "markers": "python_version >= '3.9'",
             "version": "==2.2.3"
         },
@@ -3600,6 +3601,15 @@
             "markers": "python_version >= '3.8'",
             "version": "==6.0.2"
         },
+        "qrcode": {
+            "hashes": [
+                "sha256:025ce2b150f7fe4296d116ee9bad455a6643ab4f6e7dce541613a4758cbce347",
+                "sha256:9fc05f03305ad27a709eb742cf3097fa19e6f6f93bb9e2f039c0979190f6f1b1"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.9' and python_version < '4.0'",
+            "version": "==8.0"
+        },
         "rapidfuzz": {
             "hashes": [
                 "sha256:094c26116d55bf9c53abd840d08422f20da78ec4c4723e5024322321caedca48",
@@ -4405,7 +4415,7 @@
                 "sha256:ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac",
                 "sha256:e7d814a81dad81e6caf2ec9fdedb284ecc9c73076b62654547cc64ccdcae26e9"
             ],
-            "markers": "python_version >= '3.8'",
+            "markers": "python_version < '3.12' and python_version >= '3.8'",
             "version": "==2.2.3"
         },
         "uvicorn": {
